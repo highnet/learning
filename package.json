@@ -1,0 +1,43 @@
+{
+  "name": "learning",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "bun@1.3.10",
+  "description": "Bun monorepo with Next.js frontend, Payload CMS backend, Drizzle, PostgreSQL, Redis, RabbitMQ, and Docker.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev --parallel",
+    "dev:web": "turbo dev --filter=@learning/web",
+    "dev:cms": "turbo dev --filter=@learning/cms",
+    "db:generate": "turbo run db:generate --filter=@learning/db",
+    "db:push": "turbo run db:push --filter=@learning/db",
+    "db:studio": "turbo run db:studio --filter=@learning/db",
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down",
+    "infra:logs": "docker compose logs -f",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@next/eslint-plugin-next": "16.1.6",
+    "turbo": "2.8.14",
+    "eslint": "10.0.3",
+    "eslint-config-prettier": "10.1.8",
+    "globals": "17.4.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.56.1",
+    "@types/node": "25.3.5"
+  },
+  "engines": {
+    "bun": ">=1.3.10"
+  }
+}

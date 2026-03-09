@@ -1,0 +1,36 @@
+{
+  "name": "@learning/cms",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 4001",
+    "build": "next build",
+    "start": "next start --port 4001",
+    "payload:types": "payload generate:types",
+    "payload:importmap": "payload generate:importmap",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@learning/config": "workspace:*",
+    "@learning/db": "workspace:*",
+    "@payloadcms/db-postgres": "3.79.0",
+    "@payloadcms/next": "3.79.0",
+    "@payloadcms/richtext-lexical": "3.79.0",
+    "amqplib": "0.10.9",
+    "graphql": "16.13.1",
+    "ioredis": "5.10.0",
+    "next": "15.4.11",
+    "payload": "3.79.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sharp": "0.34.5"
+  },
+  "devDependencies": {
+    "@types/amqplib": "0.10.8",
+    "@types/node": "25.3.5",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  }
+}
