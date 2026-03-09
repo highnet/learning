@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --port 4001",
+    "dev": "next dev --port 4001 --turbopack",
     "build": "next build",
     "start": "next start --port 4001",
     "payload:types": "payload generate:types",
