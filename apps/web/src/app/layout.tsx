@@ -7,8 +7,11 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'learning/web',
-  description: 'Next.js + shadcn/ui frontend for the learning monorepo.',
+  title: {
+    default: 'Learning Magazine',
+    template: '%s · Learning Magazine',
+  },
+  description: 'A picture-led blog powered by Payload, Drizzle, Redis, and RabbitMQ.',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

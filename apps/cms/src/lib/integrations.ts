@@ -3,6 +3,9 @@ import Redis from 'ioredis'
 
 let redisClient: Redis | null = null
 let rabbitConnection: amqp.ChannelModel | null = null
+let rabbitChannel: amqp.Channel | null = null
+
+const blogExchange = 'learning.blog'
 
 export function getRedisClient() {
   if (!redisClient) {
@@ -23,4 +26,25 @@ export async function getRabbitConnection() {
   }
 
   return rabbitConnection
+}
+
+export async function getRabbitChannel() {
+  if (!rabbitChannel) {
+    const connection = await getRabbitConnection()
+
+    rabbitChannel = await connection.createChannel()
+    await rabbitChannel.assertExchange(blogExchange, 'topic', { durable: true })
+  }
+
+  return rabbitChannel
+}
+
+export async function publishEvent(routingKey: string, payload: Record<string, unknown>) {
+  const channel = await getRabbitChannel()
+
+  channel.publish(blogExchange, routingKey, Buffer.from(JSON.stringify(payload)), {
+    contentType: 'application/json',
+    persistent: true,
+    timestamp: Date.now(),
+  })
 }
